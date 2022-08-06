@@ -1,0 +1,12 @@
+<div no-padding no-lines class="ion-text-center">
+  <img src="./assets/images/banktransfer.png">
+  <p>
+    Realiza una transferencia bancaria a alguna de las siguientes cuentas
+  </p>
+  <ion-item *ngFor="let account of arrBankAccounts">
+    <ion-label>{{ account.bank }}<p>{{ account.account }}</p></ion-label>
+  </ion-item>
+  <ion-button (click)="sendTicketTransaction()" expand="block" shape="round">
+    <ion-icon name="camera-outline"></ion-icon> &nbsp; Enviar Comprobante
+  </ion-button>
+</div>

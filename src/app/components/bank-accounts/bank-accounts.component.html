@@ -1,0 +1,20 @@
+<div>
+  <img src="./assets/images/banktransfer.png" alt="" srcset="">
+  <ion-list lines="none">
+    <ion-item *ngFor="let account of arrAccounts" lines="none">
+      <ion-label>{{ account.bank }}: {{ account.account }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button (click)="close()" expand="block" shape="round">Cerrar</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="buyItem()" expand="block" color="warning" shape="round"><span style="color:white;">Continuar</span></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>

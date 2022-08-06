@@ -1,0 +1,14 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Terminos y condiciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img src="./assets/images/banner-title.png" alt="" style="width: 65%;">
+  <hr>
+  <p [innerHtml]="dataSettings.conditions"></p>
+</ion-content>

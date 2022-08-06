@@ -1,0 +1,41 @@
+<app-menu-sidebar title="Transacciones"></app-menu-sidebar>
+<ion-content class="ion-padding">
+  <app-loading-preview></app-loading-preview>
+  <div *ngIf="arrTransactions">
+    <ion-card mode="ios" color="dark" style="padding:5px; margin: 0px; margin-top:4px; padding-right:15px;" *ngFor="let item of arrTransactions" (click)="showTransactionDetail(item)">
+      <ion-row>
+        <ion-col size="6">Transacción:#{{ item.id }}</ion-col>
+        <ion-col size="6" class="ion-text-right">Monto: ${{ item.amount | number : '1.2-2' }} USD</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <small>Motivo: {{ (item.reason == '-' ? 'Sin referencia':item.reason) | slice:0:35  }}</small>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <small>Fecha: {{ item.created_at | date:'d-m-y H:m a' }}</small>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <small>
+            Estatus:
+            <span *ngIf="item.type == '1' && item.status == '0'" style="color:#3dc2ff;">Bono pendiente</span>
+            <span *ngIf="item.type == '1' && item.status == '1'" style="color:#2dd36f;">Bono acreditado</span>
+            <span *ngIf="item.type == '1' && item.status == '2'" style="color:#eb445a;">Bonificación rechazada</span>
+            <span *ngIf="item.type == '0' && item.status == '0'" style="color:#3dc2ff;">Pendiente de pago</span>
+            <span *ngIf="item.type == '0' && item.status == '1'" style="color:#2dd36f;">Pago de acreditado</span>
+            <span *ngIf="item.type == '0' && item.status == '2'" style="color:#eb445a;">Pago rechazado</span>
+            <span *ngIf="item.type == '2' && item.status == '0'" style="color:#3dc2ff;">Retiro pendiente</span>
+            <span *ngIf="item.type == '2' && item.status == '1'" style="color:#2dd36f;">Retiro acreditado</span>
+            <span *ngIf="item.type == '2' && item.status == '2'" style="color:#eb445a;">Retiro rechazado</span>
+          </small>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <small style="color:#a0a0a0;" *ngIf="item.payment_method == '2'">Metodo: Transferencia</small>
+          <small style="color:#f2bf2e;" *ngIf="item.payment_method == '3'">Metodo: Cripto</small>
+        </ion-col>
+      </ion-row>
+      <ion-icon name="chevron-forward-outline" style="position: absolute;right: 1px;margin-top: -45px;"></ion-icon>
+    </ion-card>
+  </div>
+</ion-content>

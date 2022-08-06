@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="withDrawal()">
+  <ion-list style="padding: 15px;">
+    <ion-list-header *ngIf="dataResume">
+      <ion-label>Cantidad Disponible</ion-label>
+      <ion-button>{{ dataResume.rewards }} USD</ion-button>
+    </ion-list-header>
+    <img src="./assets/images/withdrawal-banner.png" style="width: 90%; margin-left: 5%;">
+    <ion-label *ngIf="dataSettings">Monto de retiro minimo: {{ dataSettings.min_withdrawal }} USD</ion-label>
+    <ion-item lines="none">
+      <ion-input type="number" placeholder="Cantidad de retiro" formControlName="amount" class="ion-text-center"></ion-input>
+      <span slot="end">USD</span>
+    </ion-item>
+    <ion-item *ngIf="Google2FAEnabled">
+      <ion-input type="number" formControlName="code" placeholder="Ingresar código 2FA"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block"  shape="round" color="warning" (click)="all()"><span color="light" style="color:white;">Todo</span></ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block"  shape="round" type="submit" [disabled]="!form.valid">Enviar retiro</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</form>

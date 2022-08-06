@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configuración 2FA</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-loading-preview></app-loading-preview>
+  <form [formGroup]='frm2FA' (ngSubmit) ="setup2FA()">
+    <ion-card mode="ios">
+      <ion-card-header *ngIf="!Google2FAEnabled">
+        <ion-card-subtitle>Importante</ion-card-subtitle>
+        <ion-card-title>Google Authenticator</ion-card-title>
+      </ion-card-header>
+      <ion-card-header *ngIf="Google2FAEnabled">
+        <ion-card-subtitle>2FA Activo</ion-card-subtitle>
+        <ion-card-title>Google Authenticator</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <p *ngIf="!Google2FAEnabled">Por favor utilice la aplicación de Google Authenticator para escanear el siguiente código QR.</p>
+          <p *ngIf="Google2FAEnabled">Se encuentra acivado la doble autenticación para retiros, si desea desactivar 2FA, 
+            por favor ingrese su código generado por Google Authenticator y contraseña de su cuenta.
+          </p>
+          <img *ngIf="!Google2FAEnabled" [src] = "dataResponse2FA.image" style="width: 70%; margin-left: 15%;">
+          <ion-item>
+            <ion-input type="password" formControlName="password" placeholder="Ingresar password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" formControlName="code" placeholder="Ingresar código"></ion-input>
+          </ion-item>
+          <ion-button *ngIf="!Google2FAEnabled" type="submit" expand='block' shape="round" type='submit' color="success" [disabled]='!frm2FA.valid'>Activar 2FA</ion-button>
+          <ion-button *ngIf="Google2FAEnabled" type="submit" expand='block' shape="round" type='submit' color="danger" [disabled]='!frm2FA.valid'>Inactivar 2FA</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

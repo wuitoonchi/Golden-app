@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles Bono liderazgo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataUser">
+<ion-card mode="ios">
+  <img [src]="itemData.image" style="width: 100%;height: 230px;">
+  <ion-card-header>
+    <ion-card-subtitle>{{ itemData.name }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    
+  <ion-item-divider mode="md"></ion-item-divider><br>
+    <p>
+      {{ itemData.description }}
+    </p>
+  </ion-card-content>
+</ion-card>
+</ion-content>
