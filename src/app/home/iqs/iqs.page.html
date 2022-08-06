@@ -17,12 +17,6 @@
         <ion-card-content class="ion-no-padding">
           <ion-card-title>
             <h2>{{ item.name }}</h2>
-            <div *ngIf="item.promotional_vigence">
-              <ion-icon *ngIf="dataUser.active != 1" name="information-circle-outline" style="position: absolute;right: 5px;top: 5px;" (click)="showInfo(item)"></ion-icon>
-            </div>
-            <div *ngIf="!item.promotional_vigence">
-              <ion-icon *ngIf="dataUser.active != 1" name="information-circle-outline" style="position: absolute;right: 5px;top: 5px;" (click)="showInfo(item)"></ion-icon>
-            </div>
           </ion-card-title>
           <ion-row>
             <ion-col size="12">

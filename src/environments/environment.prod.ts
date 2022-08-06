@@ -13,8 +13,6 @@ export const environment = {
   api: {
     url: 'https://sistema.cryptoinc.com.ec/api/v1',
     source: 'https://sistema.cryptoinc.com.ec'
-    // url: 'http://localhost:8000/api/v1',
-    // source: 'http://localhost:8000'
   },
   access: {
     name:'',

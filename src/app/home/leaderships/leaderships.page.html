@@ -26,7 +26,7 @@
           </ion-card-title>
           <ion-row *ngIf="dataUser.active == 1">
             <ion-col size="6">
-              <strike>$ {{ item.price }} USD</strike>
+              <s>$ {{ item.price }} USD</s>
             </ion-col>
             <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
               <ion-text color="success">$ {{ item.price_referral }} USD</ion-text>
@@ -37,7 +37,7 @@
               <ion-text color="success">$ {{ item.price }} USD</ion-text>
             </ion-col>
             <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
-              <strike>$ {{ item.price_referral }} USD</strike>
+              <s>$ {{ item.price_referral }} USD</s>
             </ion-col>
           </ion-row>
           <p>{{ item.description | slice:0:35  }} ...</p>

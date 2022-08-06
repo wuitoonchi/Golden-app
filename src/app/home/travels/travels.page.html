@@ -18,17 +18,11 @@
         <ion-card-content class="ion-no-padding">
           <ion-card-title>
             <h2>{{ item.name }}</h2>
-            <div *ngIf="item.promotional_vigence">
-              <ion-icon *ngIf="dataUser.active != 1" name="information-circle-outline" style="position: absolute;right: 5px;top: 5px;" (click)="showInfo(item)"></ion-icon>
-            </div>
-            <div *ngIf="!item.promotional_vigence">
-              <ion-icon *ngIf="dataUser.active != 1" name="information-circle-outline" style="position: absolute;right: 5px;top: 5px;" (click)="showInfo(item)"></ion-icon>
-            </div>
           </ion-card-title>
           <div *ngIf="item.promotional_vigence">
               <ion-row *ngIf="dataUser.active == 1">
                 <ion-col size="6">
-                  <strike>$ {{ item.price }} USD</strike>
+                  <s>$ {{ item.price }} USD</s>
                 </ion-col>
                 <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
                   <ion-text color="success">$ {{ item.price_referral }} USD</ion-text>
@@ -39,7 +33,7 @@
                   <ion-text color="success">$ {{ item.price }} USD</ion-text>
                 </ion-col>
                 <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
-                  <strike>$ {{ item.price_referral }} USD</strike>
+                  <s>$ {{ item.price_referral }} USD</s>
                 </ion-col>
               </ion-row>
           </div>

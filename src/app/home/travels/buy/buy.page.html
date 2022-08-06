@@ -18,7 +18,7 @@
       <div *ngIf="itemData.promotional_vigence">
         <ion-row *ngIf="dataUser.active == 1">
           <ion-col size="6">
-            <strike>$ {{ itemData.price }} USD</strike>
+            <s>$ {{ itemData.price }} USD</s>
           </ion-col>
           <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
             <ion-text color="success">$ {{ itemData.price_referral }} USD</ion-text>
@@ -29,7 +29,7 @@
             <ion-text color="success">$ {{ itemData.price }} USD</ion-text>
           </ion-col>
           <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
-            <strike>$ {{ itemData.price_referral }} USD</strike>
+            <s>$ {{ itemData.price_referral }} USD</s>
           </ion-col>
         </ion-row>
         <div *ngIf="itemData.price_wallet!=0">

@@ -7,17 +7,12 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { OneSignal } from '@awesome-cordova-plugins/onesignal/ngx';
-import { GooglePlus } from '@awesome-cordova-plugins/google-plus/ngx';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
-import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
@@ -31,8 +26,6 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
     BrowserAnimationsModule,
     MatExpansionModule,
     HttpClientModule
@@ -42,11 +35,9 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
     AuthService,
     StorageService,
     OneSignal,
-    GooglePlus,
     StatusBar,
     SplashScreen,
     Camera,
-    Geolocation,
     BarcodeScanner,
     Clipboard,
     InAppBrowser,
