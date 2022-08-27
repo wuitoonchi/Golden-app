@@ -1,0 +1,29 @@
+.transaction {
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background: white;
+    padding: 5px;
+    .float-icon-right {
+        float: right;
+        margin-top: -10px;
+    }
+}
+
+ion-button {
+	ion-badge {
+        position: absolute;
+        top: -0.2rem;
+        right: -0.6rem;
+        opacity: 0.9;
+        border-color: white;
+        border: 1px solid;
+        background: none;
+        transform: scale(0.5);
+        font-weight: 600;
+		& ~ ion-icon {
+			margin-right: 1.2rem;
+		}
+	}
+}

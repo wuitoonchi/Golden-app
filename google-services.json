@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "287022135589",
+    "project_id": "golden-946bf",
+    "storage_bucket": "golden-946bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287022135589:android:48f41b0d691ad186ba82cc",
+        "android_client_info": {
+          "package_name": "cryptoinc.apps.customers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287022135589-bvv3ig4thf8f7gh10qs3ucf4ugiktf4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cryptoinc.apps.customers",
+            "certificate_hash": "d2c0cd48c93b5d0aed214b0d0c6e1276585a8c08"
+          }
+        },
+        {
+          "client_id": "287022135589-qaju78464128q0jq8ac0q4omoiq5q930.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXpnwHUaYWbPN_Xlxol30aAZQ0rcxjm0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287022135589-qaju78464128q0jq8ac0q4omoiq5q930.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

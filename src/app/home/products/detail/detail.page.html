@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalles del producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataUser">
+<ion-card mode="ios">
+  <img [src]="itemData.image??'./assets/images/default-image.jpg'" style="width: 100%;height: 230px;">
+  <ion-card-header>
+    <ion-card-subtitle>{{ itemData.name }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-row *ngIf="dataUser.active == 1">
+      <ion-col size="6">
+        <s>$ {{ itemData.price }} USD</s>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
+        <ion-text color="success">$ {{ itemData.price_referral }} USD</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="dataUser.active == 0">
+      <ion-col size="6">
+        <ion-text color="success">$ {{ itemData.price }} USD</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right" style="padding-right:10px;">
+        <s>$ {{ itemData.price_referral }} USD</s>
+      </ion-col>
+    </ion-row>
+    <ion-item-divider mode="md"></ion-item-divider><br>
+    <p>
+      {{ itemData.description }}
+    </p>
+  </ion-card-content>
+</ion-card>
+<ion-row>
+  <ion-col size="12">
+    <ion-button (click)="buy()" expand="block" shape="round">
+      Comprar
+    </ion-button>
+  </ion-col>
+</ion-row>
+</ion-content>

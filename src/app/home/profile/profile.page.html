@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-justify">Perfil de usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openLeadership()">
+        <ion-icon name="rocket-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container ion-padding">
+    <form [formGroup]="form" (submit)="update()" ion-padding>
+      <div class="headerBackground">
+        <ion-row style="margin-top: 5%;">
+          <ion-col></ion-col>
+          <ion-col class="ion-text-center">
+            <ion-avatar>
+              <img src="{{ captureDataUrl }}">
+            </ion-avatar>
+            <ion-fab horizontal="center" style="margin-top: -30%;">
+              <ion-fab-button size="small">
+                <ion-icon name="aperture"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="start">
+                <ion-fab-button (click)="fromCamera()"><ion-icon name="camera-outline" color="secondary"></ion-icon></ion-fab-button>
+              </ion-fab-list>
+              <ion-fab-list side="end">
+                <ion-fab-button (click)="fromGallery()"><ion-icon name="images-outline" color="secondary"></ion-icon></ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+        <ion-input type="hidden" formControlName="image"></ion-input>
+      </div>
+
+      <ion-item>
+        <ion-input type="text" formControlName="name" placeholder="Nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" formControlName="email" [disabled]="true" placeholder="Correo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" formControlName="phone" placeholder="Teléfono"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select formControlName="country_id" placeholder="País"  style="width:100%;">
+          <ion-select-option *ngFor="let country of arrCountries" [value]="country.id">{{country.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="state" formControlName="state" placeholder="Estado/Provincia"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="city" formControlName="city" placeholder="Ciudad/Canton"></ion-input>
+      </ion-item>
+
+      <ion-button expand='block' shape="round" type='submit' [disabled]='!form.valid'>Aceptar</ion-button>
+    </form>
+  </div>
+</ion-content>

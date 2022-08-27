@@ -24,3 +24,35 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+ion-content {
+    --background: #fccb50;
+  }
+  
+  ion-split-pane {
+    ion-menu {
+      ion-content {
+         --background: #000000;
+      }
+    }
+  }
+  ion-button {
+    height: 40px;
+    --box-shadow: none;
+    text-transform: initial;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 400;
+  }
+  
+  ion-item {
+    border-radius: 10px;
+     ion-avatar{
+       ion-icon {
+        position: absolute;
+        margin-left: 24px;
+        margin-top: 24px;
+        background: white;
+        border-radius: 50%;
+       }
+     }
+  }

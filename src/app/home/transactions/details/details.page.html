@@ -1,0 +1,92 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="dataTransaction">Transacción # {{ dataTransaction.id??0 }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="dataTransaction">
+  <ion-card *ngIf="dataTransaction.type == '0'">
+    <ion-card-header>
+      <ion-card-title>Detalles de la transacción 
+        <ion-button color="warning" shape="round" style="float: right;position: absolute;right: -25px;top: -16px; transform: scale(0.8);" size="small">
+          <span style="color:white;" (click)="verArticulo()">Ver producto</span>
+        </ion-button>
+      </ion-card-title>
+      <ion-card-subtitle>Creación: {{ dataTransaction.created_at | date : 'dd-MM-YYYY' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label><b>Tipo:</b> Compra</ion-label><br>
+      <ion-label><b>Estatus:</b> {{ dataTransaction.status=='0'?'Pendiente':(dataTransaction.status == '1' ? 'Acreditado':'Cancelado') }}</ion-label><br>
+      <ion-label *ngIf="dataTransaction.order"><b>Producto:</b> <span class="ion-text-uppercase"> {{ dataTransaction.item!=null?dataTransaction.item.name:'' }}</span></ion-label><br>
+      <ion-label *ngIf="dataTransaction.order"><b>Monto:</b> ${{ dataTransaction.amount }} USD</ion-label>
+      <ion-item-divider>
+        <ion-label>Descripción de la transacción</ion-label>
+      </ion-item-divider>
+      <p>
+        {{ dataTransaction.reason }}
+      </p>
+      <ion-row *ngIf="dataTransaction.status == '0'">
+        <ion-col size="6">
+          <ion-button (click)="cancelTransaction()" expand="block" shape="round" color="danger">Cancelar</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="sendTransfer()" expand="block" shape="round" *ngIf="dataTransaction.payment_method == '2'">Tranferencia</ion-button>
+          <ion-button (click)="sendCoinPayment()" expand="block" shape="round" *ngIf="dataTransaction.payment_method == '3'">Pago crypto</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="dataTransaction.type=='1'">
+    <ion-card-header>
+      <ion-card-title>Detalles de la transacción</ion-card-title>
+      <ion-card-subtitle>Creación: {{ dataTransaction.created_at | date : 'dd-MM-YYYY' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label><b>Tipo:</b> Recompensa</ion-label><br>
+      <ion-label><b>Estatus:</b> {{ dataTransaction.status=='0'?'Pendiente':(dataTransaction.status == '1' ? 'Acreditado':'Cancelado') }}</ion-label><br>
+      <ion-label *ngIf="dataTransaction.order"><b>Producto:</b> <span class="ion-text-uppercase">{{ dataTransaction.item.name }}</span></ion-label><br>
+      <ion-label *ngIf="dataTransaction.order"><b>Monto:</b> ${{ dataTransaction.amount }} USD</ion-label>
+      <ion-item-divider style="margin-left: -15px;">
+        <ion-label>Datos del referido:</ion-label>
+      </ion-item-divider>
+      <ion-item *ngIf="dataTransaction.order" lines="none">
+        <ion-avatar slot="start">
+          <img [src]="dataTransaction.order.user.image" />
+        </ion-avatar>
+        <ion-label>{{ dataTransaction.order.user.name }}<p>{{ dataTransaction.order.user.email }}</p></ion-label>
+      </ion-item>
+      <ion-item-divider style="margin-left: -15px;">
+        <ion-label>Descripción de la transacción</ion-label>
+      </ion-item-divider>
+      <p>
+        {{ dataTransaction.reason }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="dataTransaction.type=='2'">
+    <ion-card-header>
+      <ion-card-title>Detalles de la transacción</ion-card-title>
+      <ion-card-subtitle>Creación: {{ dataTransaction.created_at | date : 'dd-MM-YYYY' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label><b>Tipo:</b> Retiro</ion-label><br>
+      <ion-label><b>Estatus:</b> {{ dataTransaction.status=='0'?'Pendiente':(dataTransaction.status == '1' ? 'Acreditado':'Cancelado') }}</ion-label><br>
+      <ion-label *ngIf="dataTransaction.order"><b>Monto:</b> ${{ dataTransaction.amount }} USD</ion-label>
+      <ion-item-divider style="margin-left: -15px;">
+        <ion-label>Descripción de la transacción</ion-label>
+      </ion-item-divider>
+      <p>
+        {{ dataTransaction.reason }}
+      </p>
+      <ion-row *ngIf="dataTransaction.status == '0'">
+        <ion-col size="12">
+          <ion-button (click)="cancelTransaction()" expand="block" shape="round" color="danger">Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,111 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Wallet</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="setUpWallet()">
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-no-padding">
+  <app-progress-bar></app-progress-bar>
+  <ion-row>
+    <ion-col>
+      <ion-card class="ion-no-padding" mode="ios" style="text-align: center; padding-top: 0.5em; margin: 0px;">
+        <ion-card-content class="ion-no-padding">
+         <ion-grid>
+           <ion-row>
+             <ion-col size="12">
+                <ion-label>
+                  <small><ion-icon name="people" size="small"></ion-icon> Afiliados Activos</small>
+                  <p>{{ resumen.referrals }}</p>
+                </ion-label>
+             </ion-col>
+           </ion-row>
+         </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card class="ion-no-padding" mode="ios" style="text-align: center; padding-top: 0.5em; margin: 0px;">
+        <ion-card-content class="ion-no-padding">
+         <ion-grid>
+           <ion-row>
+             <ion-col size="12">
+                <ion-label>
+                  <small><ion-icon name="logo-bitcoin" size="small"></ion-icon> Ganancias</small>
+                  <p>$ {{ resumen.rewards }} USD</p>
+                </ion-label>
+             </ion-col>
+           </ion-row>
+         </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-card mode="ios" class="ion-no-padding"  style="margin: 0px;" *ngIf="resumen.progress < 100">
+        <ion-card-content class="ion-no-padding">
+          <ion-item lines-none detail>
+            <ion-label>
+              <p>Para tu proximo retiro</p>
+              <h2><ion-progress-bar value="{{ resumen.progress }}" buffer="0.5"></ion-progress-bar></h2>
+            </ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card mode="ios" class="ion-no-padding"  style="margin: 0px;  margin-top:10px;" *ngIf="resumen.progress >= 100" (click)="withdrawal()">
+        <ion-card-content class="ion-no-padding">
+          <ion-item lines-none detail>
+            <ion-icon name="wallet-outline" slot="start"></ion-icon>
+            <ion-label>Solicitar retiro de fondos</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <app-loading-preview></app-loading-preview>
+      <div *ngIf="resumen">
+        <ion-card mode="ios" color="dark" style="padding:5px; margin: 0px; margin-top:4px; padding-right:15px;" *ngFor="let item of resumen.transactions" (click)="showTransactionDetail(item)">
+          <ion-row>
+            <ion-col size="6">Transacción:#{{ item.id }}</ion-col>
+            <ion-col size="6" class="ion-text-right">Monto: ${{ item.amount | number : '1.2-2' }} USD</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <small>Motivo: {{ (item.reason == '-' ? 'Sin referencia':item.reason) | slice:0:35  }}</small>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <small>Fecha: {{ item.created_at | date:'d-m-y H:m a' }}</small>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <small>
+                Estatus:
+                <span *ngIf="item.type == '1' && item.status == '0'" style="color:#3dc2ff;">Bono pendiente</span>
+                <span *ngIf="item.type == '1' && item.status == '1'" style="color:#2dd36f;">Bono acreditado</span>
+                <span *ngIf="item.type == '1' && item.status == '2'" style="color:#eb445a;">Bonificación rechazada</span>
+                <span *ngIf="item.type == '0' && item.status == '0'" style="color:#3dc2ff;">Pendiente de pago</span>
+                <span *ngIf="item.type == '0' && item.status == '1'" style="color:#2dd36f;">Pago de acreditado</span>
+                <span *ngIf="item.type == '0' && item.status == '2'" style="color:#eb445a;">Pago rechazado</span>
+                <span *ngIf="item.type == '2' && item.status == '0'" style="color:#3dc2ff;">Retiro pendiente</span>
+                <span *ngIf="item.type == '2' && item.status == '1'" style="color:#2dd36f;">Retiro acreditado</span>
+                <span *ngIf="item.type == '2' && item.status == '2'" style="color:#eb445a;">Retiro rechazado</span>
+              </small>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <small style="color:#a0a0a0;" *ngIf="item.payment_method == '2'">Metodo: Transferencia</small>
+              <small style="color:#f2bf2e;" *ngIf="item.payment_method == '3'">Metodo: Cripto</small>
+            </ion-col>
+          </ion-row>
+          <ion-icon name="chevron-forward-outline" style="position: absolute;right: 1px;margin-top: -45px;"></ion-icon>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>

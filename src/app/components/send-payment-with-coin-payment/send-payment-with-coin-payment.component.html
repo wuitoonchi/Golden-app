@@ -1,0 +1,30 @@
+<div class="ion-text-center ion-padding">
+  <img src="./assets/images/qr-scanner-human.png" *ngIf="!dataTransaction">
+  <img [src]="dataTransaction.qr" *ngIf="dataTransaction">
+  <p *ngIf="!dataTransaction">
+    <b>Su transacción ha expirado, debe generar nuevamente el proceso de pago.</b>
+    <ion-item-divider mode="md"></ion-item-divider><br>
+    Para obtener una dirección de deposito, por favor pulse el botón de generar transacción
+  </p>
+  <p *ngIf="dataTransaction">
+    Copie la dirección de pago o pulse el botón "Continuar".
+  </p>
+  <div class="text-area-container">
+    <ion-textarea [(ngModel)]="walletAddress" placeholder=""></ion-textarea>
+  </div>
+  <ion-button (click)="createTransaction()" expand="block" shape="round" *ngIf="!dataTransaction">
+    <ion-icon name="qr-code-outline"></ion-icon> &nbsp; Generar Transacción
+  </ion-button>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="copyClipBoard()" expand="block" shape="round" color="warning" *ngIf="dataTransaction">
+        <span style="color:white;"><ion-icon name="copy-outline"></ion-icon> &nbsp; Copiar</span>
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="nextToPayment()" expand="block" shape="round" *ngIf="dataTransaction">
+         Continuar &nbsp; <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</div>

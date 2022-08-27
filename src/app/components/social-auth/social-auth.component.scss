@@ -1,0 +1,57 @@
+.line-text {
+  padding:2px;
+  margin-top: 40px;
+  position: relative;
+  height: 20px;
+
+  .lines {
+    height: 1px;
+    background: #303030;
+    display: block;
+  }
+
+  .text {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 0 15px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #5e5e5e;
+    text-align: center;
+  }
+}
+
+.socials {
+  margin-top:18px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+
+  ion-button {
+    --padding-start: 12px;
+    --padding-end: 12px;
+
+    ion-icon {
+      font-size: 18px;
+    }
+  }
+
+  .btn-app {
+    --background: #555858;
+  }
+
+  .btn-fb {
+    --background: #567aa3;
+  }
+
+  .btn-tw {
+    --background: #48cff5;
+  }
+
+  .btn-go {
+    --background: #fd684f;
+  }
+}

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="dataReferral">Referido {{ dataReferral.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card mode="ios">
+  <ion-card-header>
+    <ion-card-subtitle class="ion-text-right">{{ dataReferral.name }}</ion-card-subtitle>
+    <ion-avatar>
+      <img [src]="dataReferral.image" />
+    </ion-avatar>
+  </ion-card-header>
+    <ion-card-content>
+      <div class="divider"></div><br>
+      <ion-label><b>Código:</b> {{ dataReferral.code }}</ion-label><br>
+      <ion-label><b>Email:</b>  {{ dataReferral.email }}</ion-label>
+      <br><br>
+      <ion-button (click)="removeAfiliate()" expand="full" shape="round">
+        Remover afiliado
+      </ion-button>
+    </ion-card-content>
+</ion-card>
+</ion-content>

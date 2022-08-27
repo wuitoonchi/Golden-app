@@ -1,0 +1,17 @@
+<app-menu-sidebar title="Referidos"></app-menu-sidebar>
+<ion-content class="ion-padding">
+  <app-loading-preview></app-loading-preview>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addReferral()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-item no-lines *ngFor="let item of arrReferrals" detail (click)="showDetails(item)" style="margin-top: 5px;">
+    <ion-avatar slot="start">
+      <ion-icon name="checkmark-outline" color="success" *ngIf="item.active == 1"></ion-icon>
+      <ion-icon name="alert-outline" color="danger" *ngIf="item.active == 0"></ion-icon>
+      <img [src]="item.image" />
+    </ion-avatar>
+    <ion-label>{{ item.name }}<p>{{ item.email }}</p></ion-label>
+  </ion-item>
+</ion-content>

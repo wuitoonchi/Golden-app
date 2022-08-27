@@ -1,0 +1,18 @@
+{
+    "android": {
+      "debug": {
+        "keystore": "./cryptoinc.jks",
+        "storePassword": "cryptoinc2022$",
+        "alias": "cryptoinc",
+        "password" : "cryptoinc2022$",
+        "keystoreType": "JKS"
+      },
+      "release": {
+            "keystore": "./cryptoinc.jks",
+            "storePassword": "cryptoinc2022$",
+            "alias": "cryptoinc",
+            "password" : "cryptoinc2022$",
+            "keystoreType": "JKS"
+      }
+    }
+}
