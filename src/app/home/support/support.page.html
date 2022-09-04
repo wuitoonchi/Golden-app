@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-justify">Soporte</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-subtitle><ion-icon name="nuclear-outline"></ion-icon> Datos de contacto</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Si tiene algún comentario o require de apoyo, por favor sirvase de los siguientes medios de contacto.</p>
+      <ion-label><ion-icon name="mail-outline"></ion-icon>&nbsp; Email: {{ dataSetting.email }}</ion-label><br>
+      <ion-label><ion-icon name="call-outline"></ion-icon>&nbsp; Tel: {{ dataSetting.phone }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

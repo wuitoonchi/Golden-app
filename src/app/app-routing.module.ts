@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'terms',
     loadChildren: () => import('./terms/terms.module').then( m => m.TermsPageModule)
   },
+  {
+    path: 'recovery',
+    loadChildren: () => import('./recovery/recovery.module').then( m => m.RecoveryPageModule)
+  },
 ];
 
 @NgModule({

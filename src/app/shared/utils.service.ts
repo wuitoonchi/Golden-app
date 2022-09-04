@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, Platform } from '@ionic/angular';
 import { ApiService } from './api.service';
 import { environment } from '../../environments/environment';
 import * as moment from 'moment';
@@ -18,13 +18,15 @@ export class UtilsService {
     private api: ApiService,
     private storageService: StorageService,
     public ngZone: NgZone,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    private platform: Platform,
+
   ) {
     this.storageService.getItem('langString').subscribe((langString:any)=> {
       this.langString = langString;
     });
   }
-  
+
   async syncSettingsSystem() {
     this.api.httpGetToken('settings').then((res)=> {
       this.storageService.setItem('settings',res);
@@ -120,7 +122,7 @@ export class UtilsService {
       });
       this.oneSignal.sendTags({user_id:data.user.id, type:1});
       this.oneSignal.endInit();
-    } 
+    }
   }
 
   disableNotifications()

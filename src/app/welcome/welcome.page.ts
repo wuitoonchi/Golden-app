@@ -21,4 +21,8 @@ export class WelcomePage implements OnInit {
   signUp() {
     this.navController.navigateForward('/register');
   }
+  
+  recoveryAccess() {
+    this.navController.navigateForward('/recovery');
+  }
 }

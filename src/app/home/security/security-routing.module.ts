@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'settings-setup2fa',
     loadChildren: () => import('./settings-setup2fa/settings-setup2fa.module').then( m => m.SettingsSetup2faPageModule)
+  },
+  {
+    path: 'delete-account',
+    loadChildren: () => import('./delete-account/delete-account.module').then( m => m.DeleteAccountPageModule)
   }
 ];
 
