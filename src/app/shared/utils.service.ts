@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import * as moment from 'moment';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { StorageService } from './storageService.service';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,7 @@ export class UtilsService {
     private api: ApiService,
     private storageService: StorageService,
     public ngZone: NgZone,
+    private oneSignal: OneSignal
   ) {
     this.storageService.getItem('langString').subscribe((langString:any)=> {
       this.langString = langString;
@@ -107,27 +109,24 @@ export class UtilsService {
 
   enableNotifications(data:any)
   {
-   // Uncomment to set OneSignal device logging to VERBOSE  
-    // window.plugins.OneSignal.setLogLevel(6, 0);
-
-    // NOTE: Update the setAppId value below with your OneSignal AppId.
-    window["plugins"].OneSignal.setAppId(environment.oneSignal);
-    window["plugins"].OneSignal.sendTags({user_id:data.user.id, type:1});
-    window["plugins"].OneSignal.setNotificationOpenedHandler(function(jsonData) {
-        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-    });
-
-    // iOS - Prompts the user for notification permissions.
-    //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 6) to better communicate to your users what notifications they will get.
-    window["plugins"].OneSignal.promptForPushNotificationsWithUserResponse(function(accepted) {
-        console.log("User accepted notifications: " + accepted);
-    });
-    
+    if(data) {
+      this.oneSignal.startInit(environment.oneSignal, environment.firebase.messagingSenderId);
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+        // Notrhing
+      });
+      this.oneSignal.handleNotificationOpened().subscribe(()=> {
+        // Nothing
+      });
+      this.oneSignal.sendTags({user_id:data.user.id, type:1});
+      this.oneSignal.endInit();
+    } 
   }
 
   disableNotifications()
   {
-    window["plugins"].OneSignal.setSubscription(false);
+    this.oneSignal.startInit(environment.oneSignal, environment.firebase.messagingSenderId);
+    this.oneSignal.setSubscription(false);
   }
 
   takePhotoFromCamera(): Promise<any> {
