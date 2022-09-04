@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Eliminar mi cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-subtitle>IMPORTANTE</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Conoce nuestro protocolo de eliminacion segura.
+      </p>
+      <hr>
+      <p>
+        <b>1.- Suspención de cuenta</b><br>
+        <small>
+          Como parte del protocolo seguro de eliminación de cuenta, se procedera a suspender su cuenta por un lapso de 30 dias, esto con el fin de que pueda recuperar su cuenta en caso de que se haya equivocado.
+        </small>
+      </p>
+      <p><b>2.- Reestablecimiento</b><br>
+        <small>
+          Usted podra solicitar el reestablecimiento de su cuenta en cualquier momento, utilizando la forma de recuperar acceso, esto automaticamente cancelara su proceso de eliminacion de cuenta.
+        </small>
+      </p>
+      <p><b>3.- Eliminación</b><br>
+        <small>
+          Una vez pasado los 30 dias de suspención de cuenta, su cuenta sera eliminada de forma permanente y ya no podra realizarse la recuperación de sus datos.
+        </small>
+      </p>
+      <ion-button mode="ios" shape="round" color="dark" (click)="deleteMyAccount()" expand='block'>Solicitar eliminación</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

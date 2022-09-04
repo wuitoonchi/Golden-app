@@ -23,4 +23,8 @@ export class SecurityPage implements OnInit {
   settings2FA() {
      this.navController.navigateForward('/home/security/settings-setup2fa');
   }
+
+  deleteMyAccount() {
+    this.navController.navigateForward('/home/security/delete-account');
+  }
 }

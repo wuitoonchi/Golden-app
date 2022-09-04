@@ -54,6 +54,10 @@ const routes: Routes = [
     path:'iqs',
     loadChildren: () => import('./iqs/iqs.module').then( m => m.IqsPageModule)
   },
+  {
+    path: 'support',
+    loadChildren: () => import('./support/support.module').then( m => m.SupportPageModule)
+  },
 ];
 
 @NgModule({

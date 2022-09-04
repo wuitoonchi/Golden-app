@@ -31,6 +31,10 @@ export class AuthService {
       return this.api.httpPost('auth/register',data);
     }
 
+    deleteAccount() {
+      return this.api.httpPostToken('account/delete-account',{});
+    }
+
     logout() {
       // remove all vars from localstorage
       localStorage.clear();

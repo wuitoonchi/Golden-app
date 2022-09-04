@@ -27,12 +27,14 @@ export class AppComponent {
    private platform: Platform
   ) {
     this.platform.ready().then(()=> {
-      if( this.auth.isLoggedIn ) {
-        this.utils.syncSettingsSystem();
-        this.storageService.getItem('authData').subscribe((res:any)=> {
+      this.storageService.getItem('authData').subscribe((res:any)=> {
+        if(res) {
           this.dataUser= res;
           this.utils.enableNotifications(res);
-        });
+        }
+      });
+      if( this.auth.isLoggedIn ) {
+        this.utils.syncSettingsSystem();
         this.storageService.getItem('settings').subscribe((res:any)=> {
           this.dataSettings = res;
         })
