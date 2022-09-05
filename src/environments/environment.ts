@@ -11,7 +11,7 @@ export const environment = {
   app: {
     name: 'Crypto Inc Gold',
     company:'Crypto Inc',
-    version: '1.0.2'
+    version: '1.0.8'
   },
   api: {
     url: 'https://sistema.cryptoinc.com.ec/api/v1',
